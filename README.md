@@ -3,9 +3,9 @@
 An interactive quiz game inspired by the famous French game show "Qui veut gagner des millions" (Who Wants to Be a Millionaire).
 
 ## 🎮 Play Now
-**Open the project repository here:** https://github.com/MartinCodeur28/QuestionPourUnChampion/index.html
+**Play the game here:** https://martincodeur28.github.io/QuestionPourUnChampion/
 
-From there, you can browse the XML files and choose a quiz to use in the game.
+This is the real playable version of the game. If GitHub Pages is not enabled yet, activate it in the GitHub repository settings and the site will be available at this address.
 
 ---
 
