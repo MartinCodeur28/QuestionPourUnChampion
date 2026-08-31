@@ -3,7 +3,9 @@
 An interactive quiz game inspired by the famous French game show "Qui veut gagner des millions" (Who Wants to Be a Millionaire).
 
 ## 🎮 Play Now
-**Try it out here:** https://hermlon.github.io/qvgdm_french/index.html
+**Open the project repository here:** https://github.com/MartinCodeur28/QuestionPourUnChampion
+
+From there, you can browse the XML files and choose a quiz to use in the game.
 
 ---
 
