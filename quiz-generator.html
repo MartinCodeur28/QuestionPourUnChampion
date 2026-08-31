@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QVGDM Quiz Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #243797 0%, #0B1441 100%);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #E8BA25;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .generator-section {
+            background: rgba(30, 45, 100, 0.8);
+            border: 2px solid #E8BA25;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            color: #E8BA25;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #E8BA25;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            color: #E8BA25;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            background: #1a2561;
+            color: white;
+            border: 1px solid #E8BA25;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        button {
+            background: linear-gradient(to right, #E8BA25, #F0D040);
+            color: #0B1441;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .question-list {
+            background: rgba(15, 20, 60, 0.8);
+            border: 1px solid #E8BA25;
+            border-radius: 5px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .question-item {
+            background: rgba(30, 45, 100, 0.8);
+            border-left: 4px solid #E8BA25;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+        
+        .question-item strong {
+            color: #E8BA25;
+        }
+        
+        .question-item button {
+            padding: 5px 15px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .button-group button {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .success-message {
+            background: rgba(0, 128, 0, 0.3);
+            border: 1px solid #00AA00;
+            color: #00FF00;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .error-message {
+            background: rgba(128, 0, 0, 0.3);
+            border: 1px solid #AA0000;
+            color: #FF6666;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .preview-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .preview-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-box {
+            background: rgba(30, 45, 100, 0.6);
+            border-left: 4px solid #1E8197;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 QVGDM Quiz Generator</h1>
+        
+        <div class="generator-section">
+            <div class="section-title">📝 Create New Question</div>
+            
+            <div id="successMessage" class="success-message"></div>
+            <div id="errorMessage" class="error-message"></div>
+            
+            <div class="form-group">
+                <label for="quizName">Quiz Name:</label>
+                <input type="text" id="quizName" placeholder="e.g., My Custom Quiz" value="New Quiz">
+            </div>
+            
+            <div class="form-group">
+                <label for="questionText">Question:</label>
+                <textarea id="questionText" placeholder="Enter the question here..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="correctAnswer">Correct Answer:</label>
+                <input type="text" id="correctAnswer" placeholder="Enter the correct answer...">
+            </div>
+            
+            <div class="form-group">
+                <label for="wrongAnswer1">Wrong Answer 1:</label>
+                <input type="text" id="wrongAnswer1" placeholder="Enter a wrong answer...">
+            </div>
+            
+            <div class="form-group">
+                <label for="wrongAnswer2">Wrong Answer 2:</label>
+                <input type="text" id="wrongAnswer2" placeholder="Enter a wrong answer...">
+            </div>
+            
+            <div class="form-group">
+                <label for="wrongAnswer3">Wrong Answer 3:</label>
+                <input type="text" id="wrongAnswer3" placeholder="Enter a wrong answer...">
+            </div>
+            
+            <button onclick="addQuestion()">➕ Add Question</button>
+        </div>
+        
+        <div class="generator-section">
+            <div class="section-title">📋 Questions (%COUNT%)</div>
+            <div id="questionsList" class="question-list"></div>
+            <div class="button-group">
+                <button onclick="clearAllQuestions()">🗑️ Clear All</button>
+                <button onclick="downloadXML()">⬇️ Download XML</button>
+                <button onclick="generateHTML()">🌐 Generate HTML</button>
+            </div>
+            <div class="info-box">
+                <strong>Tips:</strong>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>Add at least 3 questions before generating</li>
+                    <li>Each question needs 1 correct and 3 wrong answers</li>
+                    <li>Download XML to use with the main quiz app</li>
+                    <li>Generate HTML to create a standalone quiz file</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="generator-section">
+            <div class="section-title">📂 Import Existing Quiz</div>
+            <div class="form-group">
+                <label for="importFile">Upload XML file:</label>
+                <input type="file" id="importFile" accept=".xml" onchange="importQuiz(event)">
+            </div>
+            <div class="info-box">
+                Load an existing quiz XML file to edit or extend it.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var questions = [];
+        
+        function showMessage(message, isError = false) {
+            var msgEl = isError ? document.getElementById("errorMessage") : document.getElementById("successMessage");
+            msgEl.textContent = message;
+            msgEl.style.display = "block";
+            setTimeout(() => {
+                msgEl.style.display = "none";
+            }, 4000);
+        }
+        
+        function addQuestion() {
+            var questionText = document.getElementById("questionText").value.trim();
+            var correctAnswer = document.getElementById("correctAnswer").value.trim();
+            var wrongAnswer1 = document.getElementById("wrongAnswer1").value.trim();
+            var wrongAnswer2 = document.getElementById("wrongAnswer2").value.trim();
+            var wrongAnswer3 = document.getElementById("wrongAnswer3").value.trim();
+            
+            if(!questionText || !correctAnswer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3) {
+                showMessage("All fields are required!", true);
+                return;
+            }
+            
+            questions.push({
+                question: questionText,
+                correct: correctAnswer,
+                wrong: [wrongAnswer1, wrongAnswer2, wrongAnswer3]
+            });
+            
+            // Clear form
+            document.getElementById("questionText").value = "";
+            document.getElementById("correctAnswer").value = "";
+            document.getElementById("wrongAnswer1").value = "";
+            document.getElementById("wrongAnswer2").value = "";
+            document.getElementById("wrongAnswer3").value = "";
+            
+            updateQuestionsList();
+            showMessage("Question added successfully!");
+        }
+        
+        function removeQuestion(index) {
+            questions.splice(index, 1);
+            updateQuestionsList();
+            showMessage("Question removed!");
+        }
+        
+        function clearAllQuestions() {
+            if(confirm("Are you sure you want to delete all questions?")) {
+                questions = [];
+                updateQuestionsList();
+                showMessage("All questions cleared!");
+            }
+        }
+        
+        function updateQuestionsList() {
+            var listEl = document.getElementById("questionsList");
+            var countEl = document.querySelector(".section-title");
+            
+            if(questions.length === 0) {
+                listEl.innerHTML = "<p style='color: #999; text-align: center; padding: 20px;'>No questions yet. Add one to get started!</p>";
+            } else {
+                listEl.innerHTML = questions.map((q, i) => `
+                    <div class="question-item">
+                        <strong>Q${i + 1}:</strong> ${q.question}
+                        <div style="margin-top: 8px; font-size: 0.9em;">
+                            <div style="color: #00FF00;">✓ ${q.correct}</div>
+                            <div style="color: #999;">✗ ${q.wrong[0]}</div>
+                            <div style="color: #999;">✗ ${q.wrong[1]}</div>
+                            <div style="color: #999;">✗ ${q.wrong[2]}</div>
+                        </div>
+                        <button onclick="removeQuestion(${i})">🗑️ Delete</button>
+                    </div>
+                `).join("");
+            }
+            
+            countEl.innerHTML = `📋 Questions (${questions.length})`;
+        }
+        
+        function downloadXML() {
+            if(questions.length === 0) {
+                showMessage("Add at least one question first!", true);
+                return;
+            }
+            
+            var quizName = document.getElementById("quizName").value || "New Quiz";
+            var xml = `<?xml version="1.0" encoding="UTF-8"?>
+<quiz name="${escapeXml(quizName)}">
+  <questions>
+`;
+            
+            questions.forEach((q, i) => {
+                xml += `    <question rank="${i + 1}">
+      <name>${escapeXml(q.question)}</name>
+      <answerWrong>${escapeXml(q.wrong[0])}</answerWrong>
+      <answerWrong>${escapeXml(q.wrong[1])}</answerWrong>
+      <answerWrong>${escapeXml(q.wrong[2])}</answerWrong>
+      <answerRight>${escapeXml(q.correct)}</answerRight>
+    </question>
+`;
+            });
+            
+            xml += `  </questions>
+</quiz>`;
+            
+            downloadFile(xml, quizName.replace(/\s+/g, "_") + ".xml", "application/xml");
+            showMessage("XML file downloaded!");
+        }
+        
+        function generateHTML() {
+            if(questions.length === 0) {
+                showMessage("Add at least one question first!", true);
+                return;
+            }
+            
+            var quizName = document.getElementById("quizName").value || "New Quiz";
+            var xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<quiz name="${escapeXml(quizName)}">
+  <questions>
+`;
+            
+            questions.forEach((q, i) => {
+                xmlContent += `    <question rank="${i + 1}">
+      <name>${escapeXml(q.question)}</name>
+      <answerWrong>${escapeXml(q.wrong[0])}</answerWrong>
+      <answerWrong>${escapeXml(q.wrong[1])}</answerWrong>
+      <answerWrong>${escapeXml(q.wrong[2])}</answerWrong>
+      <answerRight>${escapeXml(q.correct)}</answerRight>
+    </question>
+`;
+            });
+            
+            xmlContent += `  </questions>
+</quiz>`;
+            
+            var htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>${escapeHtml(quizName)} - Qui veut gagner des millions?</title>
+    <meta name="description" content="${escapeHtml(quizName)} Quiz" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <style>
+${getEmbeddedCSS()}
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <div id="quizSelector">
+        <label for="quizFile">Quiz:</label>
+        <input type="file" id="quizFile" accept=".xml" />
+        <span id="currentQuiz">${escapeHtml(quizName)}</span>
+      </div>
+      <div id="questionSelector">
+        <label for="questionJump">Jump to question:</label>
+        <select id="questionJump"></select>
+      </div>
+      <button id="resetGame">Reset Game</button>
+    </div>
+    <div id="main">
+      <div id="logo"><img id="logoimg" width="300px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzI0Mzc5NyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjQwIiBmaWxsPSIjRThCQTI1IiBmb250LWZhbWlseT0iQXJpYWwiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5RVkdETTwvdGV4dD48L3N2Zz4=" /></div>
+      <div id="qanda">
+        <div id="question" class="element"></div>
+        <table id="table">
+          <tr>
+            <td>
+              <div id="element0" class="element"><span class="goldenLetter">A: </span><span id="ans1"></span></div>
+            </td>
+            <td width="50%">
+              <div id="element1" class="element"><span class="goldenLetter">B: </span><span id="ans2"></span></div>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+              <div id="element2" class="element"><span class="goldenLetter">C: </span><span id="ans3"></span></div>
+            </td>
+            <td width="50%">
+              <div id="element3" class="element"><span class="goldenLetter">D: </span><span id="ans4"></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="ranking">
+      <div id="joker">
+        <span class="joker" id="joker_5050" title="50/50">🔸</span>
+        <span class="joker" id="joker_tel" title="Phone">📞</span>
+        <span class="joker" id="joker_pub" title="Poll">📊</span>
+      </div>
+
+      <div id="r_15">15&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 1 MILLION</div>
+      <div id="r_14">14&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 500.000</div>
+      <div id="r_13">13&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 125.000</div>
+      <div id="r_12">12&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 64.000</div>
+      <div id="r_11">11&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 32.000</div>
+      <div id="r_10">10&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 16.000</div>
+      <div id="r_9">9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 8.000</div>
+      <div id="r_8">8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 4.000</div>
+      <div id="r_7">7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 2.000</div>
+      <div id="r_6">6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 1.000</div>
+      <div id="r_5">5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 500</div>
+      <div id="r_4">4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 300</div>
+      <div id="r_3">3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 200</div>
+      <div id="r_2">2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 100</div>
+      <div id="r_1">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⬦&nbsp;&nbsp;&nbsp;&nbsp;€ 50</div>
+    </div>
+
+    <script>
+${getEmbeddedJavaScript()}
+    </script>
+    
+    <script>
+    // Embedded quiz data
+    var embeddedQuizData = \`${xmlContent}\`;
+    var game = new Game();
+    game.loadQuiz(embeddedQuizData);
+    
+    // Setup UI event listeners
+    document.getElementById("questionJump").addEventListener("change", function(e) {
+      game.jumpToQuestion(parseInt(this.value));
+    });
+
+    document.getElementById("quizFile").addEventListener("change", function(e) {
+      var file = e.target.files[0];
+      if(file) {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+          game.loadQuiz(event.target.result);
+          document.getElementById("currentQuiz").textContent = file.name.replace(".xml", "");
+        }
+        reader.readAsText(file);
+      }
+    });
+
+    document.getElementById("resetGame").addEventListener("click", function() {
+      game.resetGame();
+    });
+    </script>
+  </body>
+</html>`;
+            
+            downloadFile(htmlContent, quizName.replace(/\s+/g, "_") + ".html", "text/html");
+            showMessage("HTML file generated and downloaded!");
+        }
+        
+        function importQuiz(event) {
+            var file = event.target.files[0];
+            if(!file) return;
+            
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    var xmlDoc = new DOMParser().parseFromString(e.target.result, 'text/xml');
+                    if(xmlDoc.getElementsByTagName("parsererror").length > 0) {
+                        showMessage("Invalid XML file!", true);
+                        return;
+                    }
+                    
+                    var quizName = xmlDoc.getElementsByTagName("quiz")[0].getAttribute("name");
+                    var parsedQuestions = xmlDoc.getElementsByTagName("question");
+                    
+                    questions = [];
+                    for(var i = 0; i < parsedQuestions.length; i++) {
+                        var q = parsedQuestions[i];
+                        questions.push({
+                            question: q.getElementsByTagName("name")[0].childNodes[0].nodeValue,
+                            correct: q.getElementsByTagName("answerRight")[0].childNodes[0].nodeValue,
+                            wrong: [
+                                q.getElementsByTagName("answerWrong")[0].childNodes[0].nodeValue,
+                                q.getElementsByTagName("answerWrong")[1].childNodes[0].nodeValue,
+                                q.getElementsByTagName("answerWrong")[2].childNodes[0].nodeValue
+                            ]
+                        });
+                    }
+                    
+                    document.getElementById("quizName").value = quizName;
+                    updateQuestionsList();
+                    showMessage("Quiz imported successfully! (" + questions.length + " questions)");
+                } catch(error) {
+                    showMessage("Error importing quiz: " + error.message, true);
+                }
+            }
+            reader.readAsText(file);
+        }
+        
+        function downloadFile(content, filename, type) {
+            var blob = new Blob([content], { type: type });
+            var url = window.URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+        
+        function escapeXml(str) {
+            return String(str).replace(/[<>&'"]/g, function (c) {
+                switch (c) {
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '&': return '&amp;';
+                    case '\'': return '&apos;';
+                    case '"': return '&quot;';
+                }
+            });
+        }
+        
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, function (c) {
+                switch (c) {
+                    case '&': return '&amp;';
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '"': return '&quot;';
+                    case "'": return '&#039;';
+                }
+            });
+        }
+        
+        function getEmbeddedCSS() {
+            return \`* {
+  font-family: arial;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(#243797, #0B1441);
+}
+
+#controls {
+  background: linear-gradient(to bottom, #1a2561, #0B1441);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #E8BA25;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#controls > div, #controls > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+#controls label {
+  color: #E8BA25;
+  font-weight: bold;
+}
+
+#controls input[type="file"],
+#controls select {
+  padding: 5px 10px;
+  background: #243797;
+  color: white;
+  border: 1px solid #E8BA25;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#controls select {
+  min-width: 200px;
+}
+
+#controls button {
+  padding: 8px 15px;
+  background: linear-gradient(to right, #E8BA25, #F0D040);
+  color: #0B1441;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#controls button:hover {
+  transform: scale(1.05);
+}
+
+#currentQuiz {
+  color: #E8BA25;
+  font-weight: bold;
+}
+
+#ranking {
+  display: inline-block;
+  color: #E8BA25;
+  border-left-style: solid;
+  border-color: white;
+  font-size: 25px;
+  background: linear-gradient(to right, #243797, #152261);
+  padding: 20px;
+  font-weight: bold;
+  width: 25%;
+  float: right
+}
+
+#logo {
+  width: 300px;
+  margin-left: calc(50% - 150px)
+}
+
+.joker {
+  background: radial-gradient(#1E8197, #243797);
+  border-radius: 10px;
+  padding: 7px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+#main {
+  display: inline-block;
+  width: 75%;
+}
+
+#qanda {
+  width: 100%;
+  padding: 10px;
+}
+
+.element {
+  color: white;
+  background: radial-gradient(#243797, #0B1441);
+  border-radius: 10px;
+  padding: 1px;
+  min-height: 90px;
+  line-height: 90px;
+  font-size: 40px;
+  font-size: 3.0vw;
+  text-align: center;
+  border-color: white;
+  border-style: solid;
+  border-width: 2px;
+  white-space: pre-line;
+  cursor: pointer;
+}
+
+.element:hover {
+  background: radial-gradient(#2d4db3, #1a2f70);
+}
+
+.right {
+  background: radial-gradient(green, black);
+}
+
+.wrong {
+  background: radial-gradient(red, black);
+}
+
+.marked {
+  background: radial-gradient(purple, black);
+}
+
+#question {
+  width: 100%;
+  background: radial-gradient(#443797, #2B1441);
+  margin-bottom: 20px;
+}
+
+#table {
+  width: 100%;
+}
+
+.goldenLetter {
+  color: #E8BA25;
+}\`;
+        }
+        
+        function getEmbeddedJavaScript() {
+            return \`function LeaderBoard(onUse5050) {
+  var used5050 = false;
+  var usedTel = false;
+  var usedPub = false;
+
+  var joker5050 = document.getElementById("joker_5050");
+  var jokerTel = document.getElementById("joker_tel");
+  var jokerPub =  document.getElementById("joker_pub");
+  joker5050.addEventListener("click", function(event) {
+    this.use5050();
+  }.bind(this));
+  jokerTel.addEventListener("click", function(event) {
+    this.useTel();
+  }.bind(this));
+  jokerPub.addEventListener("click", function(event) {
+    this.usePub();
+  }.bind(this));
+
+  this.setRank = function(rank) {
+    var r = document.getElementById("r_" + rank);
+    if(rank > 1) {
+      var rold = document.getElementById("r_" + (rank -1));
+      rold.classList.remove("marked");
+    }
+    r.classList.add("marked");
+  }
+  this.use5050 = function() {
+    if(!used5050) {
+      if(onUse5050()) {
+        used5050 = true;
+        joker5050.style.opacity = "0.5";
+      }
+    }
+  }
+  this.useTel = function() {
+    if(!usedTel) {
+      usedTel = true;
+      jokerTel.style.opacity = "0.5";
+    }
+  }
+  this.usePub = function() {
+    if(!usedPub) {
+      usedPub = true;
+      jokerPub.style.opacity = "0.5";
+    }
+  }
+}
+
+function Medallion() {
+  var logo = document.getElementById("logo");
+  var logoimg = document.getElementById("logoimg");
+  var degrees = 0;
+  var rotations = 0;
+  var maxrotations = 0;
+  var timeout = 0;
+  var listener;
+  var realListener;
+  this.lose = function(l) {
+    listener = this.lose2;
+    realListener = l;
+    rotations = 0;
+    maxrotations = 90;
+    timeout = 10;
+    this.rot();
+  }.bind(this)
+  this.lose2 = function() {
+    logoimg.style.filter = "brightness(0.5)";
+    listener = realListener;
+    rotations = 0;
+    maxrotations = 270;
+    timeout = 10;
+    this.rot();
+  }.bind(this)
+  this.win = function(l) {
+    listener = this.win2;
+    realListener = l;
+    rotations = 0;
+    maxrotations = 90;
+    timeout = 10;
+    this.rot();
+  }.bind(this)
+  this.win2 = function() {
+    logoimg.style.filter = "brightness(1.5)";
+    listener = realListener;
+    rotations = 0;
+    maxrotations = 270;
+    timeout = 10;
+    this.rot();
+  }.bind(this)
+  this.rotate = function(l) {
+    listener = l;
+    rotations = 0;
+    maxrotations = 360;
+    timeout = 5;
+    this.rot();
+  }.bind(this)
+  this.rot = function() {
+    if(rotations < maxrotations) {
+      rotations ++;
+      this.rotateOneDegree();
+      window.setTimeout(this.rot, timeout);
+    }
+    else {
+      listener();
+    }
+  }.bind(this)
+  this.rotateOneDegree = function() {
+    degrees += 1;
+    if(degrees > 360) {
+      degrees = degrees - 360;
+    }
+    logo.style.transform="rotateY(" + degrees + "deg)";
+    logo.style.webkitTransform="rotateY(" + degrees + "deg)";
+    logo.style.OTransform="rotateY(" + degrees + "deg)";
+    logo.style.MozTransform="rotateY(" + degrees + "deg)";
+  }
+}
+
+function Question() {
+  this.rank;
+  this.name;
+  var answers = new Array();
+  this.rightAnswer;
+  this.setAnswers = function(ans, rightAnswer) {
+    answers = this.shuffle(ans);
+    for(var i = 0; i < answers.length; i ++) {
+      if(answers[i] == rightAnswer) {
+        this.rightAnswer = i;
+      }
+    }
+  }
+  this.getAnswers = function() {
+    return answers;
+  }
+  this.shuffle = function(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+}
+
+function QuestionBoard(ocl) {
+  var ansElement = new Array();
+  ansElement[0] = document.getElementById("ans1");
+  ansElement[1] = document.getElementById("ans2");
+  ansElement[2] = document.getElementById("ans3");
+  ansElement[3] = document.getElementById("ans4");
+  var onClickListener = ocl;
+  var ansDiv = new Array();
+  for(var i = 0; i < 4; i ++) {
+    ansDiv[i] = document.getElementById("element" + i);
+  }
+  ansDiv[0].addEventListener("click", function(e) {this.handleClick(0);}.bind(this));
+  ansDiv[1].addEventListener("click", function(e) {this.handleClick(1);}.bind(this));
+  ansDiv[2].addEventListener("click", function(e) {this.handleClick(2);}.bind(this));
+  ansDiv[3].addEventListener("click", function(e) {this.handleClick(3);}.bind(this));
+
+  var questionElement = document.getElementById("question");
+  this.newestQuestion;
+
+  this.setQuestion = function(question) {
+    this.newestQuestion = question;
+    questionElement.innerHTML = this.newestQuestion.name;
+    for(var i = 0; i < 4; i ++) {
+      ansElement[i].innerHTML = this.newestQuestion.getAnswers()[i];
+    }
+  }
+  this.right = function(pos) {
+    ansDiv[pos].classList.remove("wrong");
+    ansDiv[pos].classList.add("right");
+  }
+  this.wrong = function(pos) {
+    ansDiv[pos].classList.remove("right");
+    ansDiv[pos].classList.add("wrong");
+  }
+  this.clear = function() {
+    for(var t = 0; t < 4; t ++) {
+      ansDiv[t].classList.remove("right");
+      ansDiv[t].classList.remove("wrong");
+    }
+  }
+
+  this.handleClick = function(pos) {
+    onClickListener(pos);
+  }
+}
+
+function Game() {
+  var questions = new Array();
+  var rank = 1;
+  var maxrank = 0;
+  var clickable = true;
+  var self = this;
+  
+  var answerClick = function(i) {
+    if(clickable) {
+        self.check(i);
+    }
+  }
+  
+  var parseXML = function(xmlContent) {
+    var xmlDoc = new DOMParser().parseFromString(xmlContent,'text/xml');
+    var parsedQuestions = xmlDoc.getElementsByTagName("question");
+    questions = new Array();
+    for(var x = 0; x < parsedQuestions.length; x ++) {
+      questions[x] = new Question();
+      questions[x].rank = parsedQuestions[x].getAttribute("rank");
+      questions[x].name = parsedQuestions[x].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+      questions[x].setAnswers([parsedQuestions[x].getElementsByTagName("answerWrong")[0].childNodes[0].nodeValue,
+      parsedQuestions[x].getElementsByTagName("answerWrong")[1].childNodes[0].nodeValue,
+      parsedQuestions[x].getElementsByTagName("answerWrong")[2].childNodes[0].nodeValue,
+    parsedQuestions[x].getElementsByTagName("answerRight")[0].childNodes[0].nodeValue],
+      parsedQuestions[x].getElementsByTagName("answerRight")[0].childNodes[0].nodeValue);
+    }
+    maxrank = questions.length;
+    self.updateQuestionSelector();
+  }
+
+  var randomIntFromInterval = function(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+  }
+  
+  var medallion = new Medallion();
+  var questionBoard = new QuestionBoard(answerClick);
+  var leaderBoard = new LeaderBoard(function() {
+    if(clickable) {
+      var x = questionBoard.newestQuestion.getAnswers();
+      var p1 = -1;
+      var p2 = -1;
+      while(p1 == -1 || p2 == -1) {
+        var random = randomIntFromInterval(0, 3);
+        if(questionBoard.newestQuestion.rightAnswer != random) {
+          if(p1 == -1) {
+            p1 = random;
+          }
+          else {
+            if(random != p1) {
+              p2 = random;
+            }
+          }
+        }
+      }
+      questionBoard.wrong(p1);
+      questionBoard.wrong(p2);
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
+
+  this.check = function(i) {
+    clickable = false;
+    if(i == questionBoard.newestQuestion.rightAnswer) {
+      questionBoard.right(i);
+      rank ++;
+      if(rank <= maxrank) {
+        medallion.rotate(function() {
+          questionBoard.clear();
+          clickable = true;
+          self.newQuestion();
+        });
+      }
+      else {
+        medallion.win(function() {
+          questionBoard.clear();
+        });
+      }
+    }
+    else {
+      questionBoard.right(questionBoard.newestQuestion.rightAnswer);
+      questionBoard.wrong(i);
+      medallion.lose(function() {
+        self.resetGame();
+      });
+    }
+  }
+
+  this.startGame = function() {
+    self.newQuestion();
+  }
+  
+  this.newQuestion = function() {
+    for(var r = 0; r < questions.length; r ++) {
+      if(questions[r].rank == rank) {
+        leaderBoard.setRank(rank);
+        questionBoard.setQuestion(questions[r]);
+        break;
+      }
+    }
+  }
+  
+  this.jumpToQuestion = function(questionRank) {
+    if(questionRank >= 1 && questionRank <= maxrank) {
+      rank = questionRank;
+      clickable = true;
+      questionBoard.clear();
+      this.newQuestion();
+    }
+  }
+  
+  this.loadQuiz = function(xmlContent) {
+    parseXML(xmlContent);
+    rank = 1;
+    clickable = true;
+    questionBoard.clear();
+    this.newQuestion();
+  }
+  
+  this.updateQuestionSelector = function() {
+    var selector = document.getElementById("questionJump");
+    selector.innerHTML = "";
+    for(var i = 1; i <= maxrank; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.textContent = "Question " + i;
+      selector.appendChild(option);
+    }
+  }
+  
+  this.resetGame = function() {
+    rank = 1;
+    clickable = true;
+    questionBoard.clear();
+    this.newQuestion();
+  }
+}\`;
+        }
+    </script>
+</body>
+</html>

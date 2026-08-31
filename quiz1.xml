@@ -1,0 +1,25 @@
+<quiz name="TestQuiz">
+  <questions>
+    <question rank="1">
+      <name>Quelle est la capitale de la France ?</name>
+      <answerWrong>Londres</answerWrong>
+      <answerWrong>Berlin</answerWrong>
+      <answerWrong>Madrid</answerWrong>
+      <answerRight>Paris</answerRight>
+    </question>
+    <question rank="2">
+      <name>Quel est le nom français le plus utilisé ? </name>
+      <answerWrong>Jean</answerWrong>
+      <answerWrong>Michel</answerWrong>
+      <answerWrong>Pierre</answerWrong>
+      <answerRight>Marie</answerRight>
+    </question>
+    <question rank="3">
+      <name>Quel est le plus grand océan du monde ?</name>
+      <answerWrong>Océan Atlantique</answerWrong>
+      <answerWrong>Océan Indien</answerWrong>
+      <answerWrong>Océan Arctique</answerWrong>
+      <answerRight>Océan Pacifique</answerRight>
+    </question>
+  </questions>
+</quiz>

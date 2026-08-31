@@ -1,0 +1,109 @@
+<quiz name="Équipe filles">
+  <questions>
+    <question rank="1">
+      <name>Quel est le plus grand océan de la planète ?</name>
+      <answerWrong>Atlantique</answerWrong>
+      <answerWrong>Indien</answerWrong>
+      <answerWrong>Arctique</answerWrong>
+      <answerRight>Pacifique</answerRight>
+    </question>
+    <question rank="2">
+      <name>Qui chante "Firework" ?</name>
+      <answerWrong>Taylor Swift</answerWrong>
+      <answerWrong>Rihanna</answerWrong>
+      <answerWrong>Lady Gaga</answerWrong>
+      <answerRight>Katy Perry</answerRight>
+    </question>
+    <question rank="3">
+      <name>Quelle est la capitale de l'Australie ?</name>
+      <answerWrong>Sydney</answerWrong>
+      <answerWrong>Melbourne</answerWrong>
+      <answerWrong>Brisbane</answerWrong>
+      <answerRight>Canberra</answerRight>
+    </question>
+    <question rank="4">
+      <name>Quel groupe britannique interprète "Bohemian Rhapsody" ?</name>
+      <answerWrong>The Beatles</answerWrong>
+      <answerWrong>The Rolling Stones</answerWrong>
+      <answerWrong>Pink Floyd</answerWrong>
+      <answerRight>Queen</answerRight>
+    </question>
+    <question rank="5">
+      <name>Dans quelle saga apparaît le personnage d'Hermione Granger ?</name>
+      <answerWrong>Twilight</answerWrong>
+      <answerWrong>Hunger Games</answerWrong>
+      <answerWrong>Le Seigneur des Anneaux</answerWrong>
+      <answerRight>Harry Potter</answerRight>
+    </question>
+    <question rank="6">
+      <name>Quel est le symbole chimique de l'or ?</name>
+      <answerWrong>Or</answerWrong>
+      <answerWrong>Ag</answerWrong>
+      <answerWrong>Gd</answerWrong>
+      <answerRight>Au</answerRight>
+    </question>
+    <question rank="7">
+      <name>Quel album de Katy Perry contient notamment "Firework", "Teenage Dream" et "California Gurls" ?</name>
+      <answerWrong>Prism</answerWrong>
+      <answerWrong>One of the Boys</answerWrong>
+      <answerWrong>Witness</answerWrong>
+      <answerRight>Teenage Dream</answerRight>
+    </question>
+    <question rank="8">
+      <name>Qui a peint "La Nuit étoilée" ?</name>
+      <answerWrong>Pablo Picasso</answerWrong>
+      <answerWrong>Claude Monet</answerWrong>
+      <answerWrong>Salvador Dalí</answerWrong>
+      <answerRight>Vincent van Gogh</answerRight>
+    </question>
+    <question rank="9">
+      <name>Quel pays a offert la Statue de la Liberté aux États-Unis ?</name>
+      <answerWrong>Royaume-Uni</answerWrong>
+      <answerWrong>Espagne</answerWrong>
+      <answerWrong>Italie</answerWrong>
+      <answerRight>France</answerRight>
+    </question>
+    <question rank="10">
+      <name>Quel est le seul mammifère capable de véritablement voler ?</name>
+      <answerWrong>L'écureuil volant</answerWrong>
+      <answerWrong>Le colugo</answerWrong>
+      <answerWrong>Le furet volant</answerWrong>
+      <answerRight>La chauve-souris</answerRight>
+    </question>
+    <question rank="11">
+      <name>Quel était le premier prénom de Katy Perry ?</name>
+      <answerWrong>Katherine</answerWrong>
+      <answerWrong>Kathryn</answerWrong>
+      <answerWrong>Kate</answerWrong>
+      <answerRight>Katheryn</answerRight>
+    </question>
+    <question rank="12">
+      <name>Quel détroit sépare l'Espagne du Maroc ?</name>
+      <answerWrong>Détroit du Bosphore</answerWrong>
+      <answerWrong>Détroit de Messine</answerWrong>
+      <answerWrong>Détroit des Dardanelles</answerWrong>
+      <answerRight>Détroit de Gibraltar</answerRight>
+    </question>
+    <question rank="13">
+      <name>Quel titre de Katy Perry a été inspiré par une relation personnelle et figure sur l'album Prism ?</name>
+      <answerWrong>Roar</answerWrong>
+      <answerWrong>Dark Horse</answerWrong>
+      <answerWrong>California Gurls</answerWrong>
+      <answerRight>By the Grace of God</answerRight>
+    </question>
+    <question rank="14">
+      <name>Quel élément possède le numéro atomique 79 ?</name>
+      <answerWrong>Argent</answerWrong>
+      <answerWrong>Platine</answerWrong>
+      <answerWrong>Mercure</answerWrong>
+      <answerRight>Or</answerRight>
+    </question>
+    <question rank="15">
+      <name>Dans quelle ville se trouve le siège principal de l'Organisation des Nations unies ?</name>
+      <answerWrong>Genève</answerWrong>
+      <answerWrong>Paris</answerWrong>
+      <answerWrong>Londres</answerWrong>
+      <answerRight>New York</answerRight>
+    </question>
+  </questions>
+</quiz>

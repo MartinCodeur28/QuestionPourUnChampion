@@ -1,0 +1,141 @@
+* {
+  font-family: arial;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(#243797, #0B1441);
+}
+
+#controls {
+  background: linear-gradient(to bottom, #1a2561, #0B1441);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #E8BA25;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#controls > div, #controls > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+#controls label {
+  color: #E8BA25;
+  font-weight: bold;
+}
+
+#controls input[type="file"],
+#controls select {
+  padding: 5px 10px;
+  background: #243797;
+  color: white;
+  border: 1px solid #E8BA25;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#controls select {
+  min-width: 200px;
+}
+
+#controls button {
+  padding: 8px 15px;
+  background: linear-gradient(to right, #E8BA25, #F0D040);
+  color: #0B1441;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#controls button:hover {
+  transform: scale(1.05);
+}
+
+#currentQuiz {
+  color: #E8BA25;
+  font-weight: bold;
+}
+
+#ranking {
+  display: inline-block;
+  color: #E8BA25;
+  border-left-style: solid;
+  border-color: white;
+  font-size: 25px;
+  background: linear-gradient(to right, #243797, #152261);
+  padding: 20px;
+  font-weight: bold;
+  width: 25%;
+  float: right
+}
+
+#logo {
+  width: 300px;
+  margin-left: calc(50% - 150px)
+}
+
+.joker {
+  background: radial-gradient(#1E8197, #243797);
+  border-radius: 10px;
+  padding: 7px;
+}
+
+#main {
+  display: inline-block;
+  width: 75%;
+}
+
+#qanda {
+  width: 100%;
+  padding: 10px;
+}
+
+.element {
+  color: white;
+  background: radial-gradient(#243797, #0B1441);
+  border-radius: 10px;
+  padding: 1px;
+  min-height: 90px;
+  line-height: 90px;
+  font-size: 40px;
+  font-size: 3.0vw;
+  text-align: center;
+  border-color: white;
+  border-style: solid;
+  border-width: 2px;
+  white-space: pre-line;
+}
+
+.right {
+  background: radial-gradient(green, black);
+}
+
+.wrong {
+  background: radial-gradient(red, black);
+}
+
+.marked {
+  background: radial-gradient(purple, black);
+}
+
+#question {
+  width: 100%;
+  background: radial-gradient(#443797, #2B1441);
+  margin-bottom: 20px;
+}
+
+#table {
+  width: 100%;
+}
+
+.goldenLetter {
+  color: #E8BA25;
+}

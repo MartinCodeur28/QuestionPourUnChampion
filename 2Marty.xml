@@ -1,0 +1,109 @@
+<quiz name="Équipe garçons">
+  <questions>
+    <question rank="1">
+      <name>Combien de joueurs d'une même équipe sont simultanément sur le terrain au basket ?</name>
+      <answerWrong>4</answerWrong>
+      <answerWrong>6</answerWrong>
+      <answerWrong>7</answerWrong>
+      <answerRight>5</answerRight>
+    </question>
+    <question rank="2">
+      <name>En quelle année débute la Révolution française ?</name>
+      <answerWrong>1776</answerWrong>
+      <answerWrong>1783</answerWrong>
+      <answerWrong>1792</answerWrong>
+      <answerRight>1789</answerRight>
+    </question>
+    <question rank="3">
+      <name>Quel joueur NBA est surnommé "King James" ?</name>
+      <answerWrong>Michael Jordan</answerWrong>
+      <answerWrong>Kevin Durant</answerWrong>
+      <answerWrong>James Harden</answerWrong>
+      <answerRight>LeBron James</answerRight>
+    </question>
+    <question rank="4">
+      <name>Quel célèbre monument parisien devait initialement être démonté après l'Exposition universelle de 1889 ?</name>
+      <answerWrong>L'Arc de triomphe</answerWrong>
+      <answerWrong>Le Sacré-Cœur</answerWrong>
+      <answerWrong>Le Panthéon</answerWrong>
+      <answerRight>La tour Eiffel</answerRight>
+    </question>
+    <question rank="5">
+      <name>Quelle équipe NBA joue ses matchs au Madison Square Garden ?</name>
+      <answerWrong>Brooklyn Nets</answerWrong>
+      <answerWrong>Boston Celtics</answerWrong>
+      <answerWrong>New York Liberty</answerWrong>
+      <answerRight>New York Knicks</answerRight>
+    </question>
+    <question rank="6">
+      <name>Qui était le premier empereur des Français ?</name>
+      <answerWrong>Louis XVI</answerWrong>
+      <answerWrong>Charlemagne</answerWrong>
+      <answerWrong>Napoléon III</answerWrong>
+      <answerRight>Napoléon Ier</answerRight>
+    </question>
+    <question rank="7">
+      <name>Quel joueur détient le record du plus grand nombre de titres NBA remportés par un joueur ?</name>
+      <answerWrong>Michael Jordan</answerWrong>
+      <answerWrong>Kareem Abdul-Jabbar</answerWrong>
+      <answerWrong>Magic Johnson</answerWrong>
+      <answerRight>Bill Russell</answerRight>
+    </question>
+    <question rank="8">
+      <name>Quel traité met officiellement fin à la Première Guerre mondiale entre l'Allemagne et les Alliés ?</name>
+      <answerWrong>Traité de Paris</answerWrong>
+      <answerWrong>Traité de Vienne</answerWrong>
+      <answerWrong>Traité de Potsdam</answerWrong>
+      <answerRight>Traité de Versailles</answerRight>
+    </question>
+    <question rank="9">
+      <name>Quel joueur a remporté les MVP NBA 2015 et 2016 ?</name>
+      <answerWrong>LeBron James</answerWrong>
+      <answerWrong>Kevin Durant</answerWrong>
+      <answerWrong>James Harden</answerWrong>
+      <answerRight>Stephen Curry</answerRight>
+    </question>
+    <question rank="10">
+      <name>Quel roi de France était surnommé "le Roi-Soleil" ?</name>
+      <answerWrong>Louis XIII</answerWrong>
+      <answerWrong>Louis XV</answerWrong>
+      <answerWrong>Charles X</answerWrong>
+      <answerRight>Louis XIV</answerRight>
+    </question>
+    <question rank="11">
+      <name>Quelle franchise NBA a remporté le plus de titres NBA à égalité avec les Boston Celtics ?</name>
+      <answerWrong>Chicago Bulls</answerWrong>
+      <answerWrong>Golden State Warriors</answerWrong>
+      <answerWrong>San Antonio Spurs</answerWrong>
+      <answerRight>Los Angeles Lakers</answerRight>
+    </question>
+    <question rank="12">
+      <name>En 1066, quelle bataille voit Guillaume le Conquérant vaincre Harold Godwinson ?</name>
+      <answerWrong>Bataille d'Azincourt</answerWrong>
+      <answerWrong>Bataille de Waterloo</answerWrong>
+      <answerWrong>Bataille de Crécy</answerWrong>
+      <answerRight>Bataille d'Hastings</answerRight>
+    </question>
+    <question rank="13">
+      <name>Quel joueur NBA est le seul à avoir remporté, lors d'une même saison, le MVP de la saison régulière, le MVP des Finales et le titre de Défenseur de l'année ?</name>
+      <answerWrong>Michael Jordan</answerWrong>
+      <answerWrong>LeBron James</answerWrong>
+      <answerWrong>Shaquille O'Neal</answerWrong>
+      <answerRight>Hakeem Olajuwon</answerRight>
+    </question>
+    <question rank="14">
+      <name>Quels traités mettent fin à la guerre de Trente Ans en 1648 ?</name>
+      <answerWrong>Les traités de Versailles</answerWrong>
+      <answerWrong>Le traité de Vienne</answerWrong>
+      <answerWrong>Les traités de Rome</answerWrong>
+      <answerRight>Les traités de Westphalie</answerRight>
+    </question>
+    <question rank="15">
+      <name>Quel joueur a été le premier à dépasser Kareem Abdul-Jabbar au classement des meilleurs marqueurs de l'histoire de la saison régulière NBA ?</name>
+      <answerWrong>Kobe Bryant</answerWrong>
+      <answerWrong>Michael Jordan</answerWrong>
+      <answerWrong>Karl Malone</answerWrong>
+      <answerRight>LeBron James</answerRight>
+    </question>
+  </questions>
+</quiz>
