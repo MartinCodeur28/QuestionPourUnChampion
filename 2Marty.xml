@@ -71,11 +71,11 @@
       <answerRight>Louis XIV</answerRight>
     </question>
     <question rank="11">
-      <name>Quelle franchise NBA a remporté le plus de titres NBA à égalité avec les Boston Celtics ?</name>
+      <name>Quelle franchise NBA a remporté le plus de titres NBA ?</name>
       <answerWrong>Chicago Bulls</answerWrong>
       <answerWrong>Golden State Warriors</answerWrong>
-      <answerWrong>San Antonio Spurs</answerWrong>
-      <answerRight>Los Angeles Lakers</answerRight>
+      <answerRight>Boston Celtics</answerRight>
+      <answerWrong>Los Angeles Lakers</answerWrong>
     </question>
     <question rank="12">
       <name>En 1066, quelle bataille voit Guillaume le Conquérant vaincre Harold Godwinson ?</name>
